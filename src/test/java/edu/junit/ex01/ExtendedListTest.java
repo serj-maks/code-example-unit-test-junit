@@ -52,7 +52,6 @@ class ExtendedListTest {
     }
 
     @Test
-    @DisplayName("should return false")
     void forAll_shouldReturnFalse() {
         ExtendedList<Integer> integers = new ExtendedList<>(1, 3, 5);
         Predicate<Integer> predicate = x -> x % 2 == 0;
@@ -75,8 +74,8 @@ class ExtendedListTest {
     }
 
     @Test
-    @DisplayName("should separate input list")
-    void partition_separateInputList() {
+    @DisplayName("separate input list on two different lists")
+    void partition_shouldSeparateInputList() {
         // 1 - given
         ExtendedList<Integer> integers = new ExtendedList<>(1, 2, 3, 4, 5, 6, 7);
         Map<Boolean, List<Integer>> expected = new HashMap<>();
