@@ -33,10 +33,10 @@ class ExtendedListTest {
 
     @Test
     void fill() {
-        ExtendedList<Integer> integers = new ExtendedList<>(1);
-        ExtendedList<Integer> expected = new ExtendedList<>(1);
+        ExtendedList<Integer> integers = new ExtendedList<>();
+        ExtendedList<Integer> expected = new ExtendedList<>(1,2,3,4,5);
         Supplier<Integer> supplier = () -> (int) (Math.random() * 100);
-        List<Integer> actual = integers.fill(supplier, 1);
+        List<Integer> actual = integers.fill(supplier, 5);
         int expectedSize = expected.size();
         int actualSize = actual.size();
         assertEquals(expectedSize, actualSize);
@@ -52,8 +52,9 @@ class ExtendedListTest {
     }
 
     @Test
+    @DisplayName("should return false")
     void forAll_shouldReturnFalse() {
-        ExtendedList<Integer> integers = new ExtendedList<>(1, 3, 5);
+        ExtendedList<Integer> integers = new ExtendedList<>(2, 3, 6);
         Predicate<Integer> predicate = x -> x % 2 == 0;
         boolean actual = integers.forAll(predicate);
         assertFalse(actual);
@@ -61,21 +62,20 @@ class ExtendedListTest {
 
     @Test
     void partition() {
-        ExtendedList<Integer> integers = new ExtendedList<>(2, 4, 6);
         Map<Boolean, List<Integer>> map = new HashMap<>();
+        ExtendedList<Integer> integers = new ExtendedList<>(2, 4, 6);
+        List<Integer> emptyList = new ArrayList<>();
         map.put(true, integers);
-        map.put(false, new ArrayList<>());
-        Map<Boolean, List<Integer>> expected = map;
-
+        map.put(false, emptyList);
         Predicate<Integer> predicate = x -> x % 2 == 0;
+        Map<Boolean, List<Integer>> expected = map;
         Map<Boolean, List<Integer>> actual = integers.partition(predicate);
-
         assertEquals(expected, actual);
     }
 
     @Test
-    @DisplayName("separate input list on two different lists")
-    void partition_shouldSeparateInputList() {
+    @DisplayName("should separate input list")
+    void partition_separateInputList() {
         // 1 - given
         ExtendedList<Integer> integers = new ExtendedList<>(1, 2, 3, 4, 5, 6, 7);
         Map<Boolean, List<Integer>> expected = new HashMap<>();
