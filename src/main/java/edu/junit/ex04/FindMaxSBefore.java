@@ -1,4 +1,4 @@
-package edu.junit.ex03;
+package edu.junit.ex04;
 
 import java.io.File;
 import java.util.Collections;

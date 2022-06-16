@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
-import static edu.serjmaks.io.task1.tested_solution.HtmlAction.copyHtmlPageToFile;
+import static edu.junit.ex03.HtmlAction.copyHtmlPageToFile;;
 
 public class PageDownloader {
 

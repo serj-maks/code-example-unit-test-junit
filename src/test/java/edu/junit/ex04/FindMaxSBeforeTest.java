@@ -1,4 +1,4 @@
-package edu.junit.ex03;
+package edu.junit.ex04;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
